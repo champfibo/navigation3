@@ -1,0 +1,439 @@
+<robot name="mbse">
+    
+    <link name="base_link">
+        <visual>
+            <origin xyz="0.0 0.0 0.0" rpy="0.0 0.0 0.0"/>
+            <geometry >
+                <mesh
+                filename="$(find sam_bot_description)/meshes2/base_link.STL" />
+            </geometry>
+            <material name="white">
+                <color rgba="1.0 1.0 1.0 1.0"/>
+            </material>
+        </visual>
+        <inertial>
+            <origin
+                 xyz="0 1 0"
+                 rpy="0 0 0" />
+            <mass value="1"/>
+            <inertia ixx="10" ixy="0.86382" ixz="-0.038881" 
+                     iyy="6.0501" iyz="1.1583" izz="15.0"/>
+        </inertial>
+        <collision>
+            <origin xyz="0.0 0.0 0.0" rpy="0.0 0.0 0.0"/>
+            <geometry >
+                <mesh
+                filename="$(find sam_bot_description)/meshes2/base_link.STL" />
+                
+            </geometry>
+        </collision>
+    </link>
+
+    <link name="CCR">
+    <inertial>
+      <origin
+        xyz="-0.015533 -5.6562E-07 0.081281"
+        rpy="0 0 0" />
+      <mass
+        value="0.14542" />
+     <inertia
+        ixx="0.4"
+        ixy="0.0"
+        ixz="-0.0"
+        iyy="0.6"
+        iyz="0.0"
+        izz="0.15" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="$(find sam_bot_description)/meshes2/CCR.STL" />
+      </geometry>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="$(find sam_bot_description)/meshes2/CCR.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint
+    name="ccR"
+    type="continuous">
+    <origin
+      xyz="0.10495 -1.247 0.17876"
+      rpy="0 0 -0.19325" />
+    <parent
+      link="base_link" />
+    <child
+      link="CCR" />
+    <axis
+      xyz="0 0 1" />
+  </joint>
+  <link
+    name="CWR">
+    <inertial>
+      <origin
+        xyz="-1.9475E-08 -6.6613E-16 -1.5266E-15"
+        rpy="0 0 0" />
+      <mass
+        value="5" />
+      <inertia
+        ixx="0.4"
+        ixy="0.0"
+        ixz="-0.0"
+        iyy="0.6"
+        iyz="0.0"
+        izz="0.15" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="$(find sam_bot_description)/meshes2/CWR.STL" />
+      </geometry>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="$(find sam_bot_description)/meshes2/CWR.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint
+    name="cwR"
+    type="continuous">
+    <origin
+      xyz="-0.04 0 0.02"
+      rpy="0 -0.94095 0" />
+    <parent
+      link="CCR" />
+    <child
+      link="CWR" />
+    <axis
+      xyz="0 1 0" />
+  </joint>
+
+  <link
+    name="CCL">
+    <inertial>
+      <origin
+        xyz="-0.015533 -4.4675E-07 0.081281"
+        rpy="0 0 0" />
+      <mass
+        value="0.14542" />
+      <inertia
+        ixx="0.4"
+        ixy="0.0"
+        ixz="-0.0"
+        iyy="0.6"
+        iyz="0.0"
+        izz="0.15" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="$(find sam_bot_description)/meshes2/CCL.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0.79216 0.81961 0.93333 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="$(find sam_bot_description)/meshes2/CCL.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint
+    name="ccL"
+    type="continuous">
+    <origin
+      xyz="0.10495 -0.86703 0.17876"
+      rpy="0 0 0.079406" />
+    <parent
+      link="base_link" />
+    <child
+      link="CCL" />
+    <axis
+      xyz="0 0 1" />
+  </joint>
+  <link
+    name="CWL">
+    <inertial>
+      <origin
+        xyz="-1.9475E-08 -1.9984E-15 -1.0825E-15"
+        rpy="0 0 0" />
+      <mass
+        value="0.49701" />
+      <inertia
+        ixx="0.4"
+        ixy="0.0"
+        ixz="-0.0"
+        iyy="0.6"
+        iyz="0.0"
+        izz="0.15" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="$(find sam_bot_description)/meshes2/CWL.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0.79216 0.81961 0.93333 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="$(find sam_bot_description)/meshes2/CWL.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint
+    name="cwL"
+    type="continuous">
+    <origin
+      xyz="-0.04 0 0.02"
+      rpy="0 0.049745 0" />
+    <parent
+      link="CCL" />
+    <child
+      link="CWL" />
+    <axis
+      xyz="0 1 0" />
+  </joint>
+
+   <link
+    name="DL">
+    <inertial>
+      <origin
+        xyz="5.5511E-17 0.03 -5.5511E-17"
+        rpy="0 0 0" />
+      <mass
+        value="4.0842" />
+      <inertia
+        ixx="0.4"
+        ixy="0.0"
+        ixz="-0.0"
+        iyy="0.6"
+        iyz="0.0"
+        izz="0.15" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="$(find sam_bot_description)/meshes2/DL.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0.79216 0.81961 0.93333 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="$(find sam_bot_description)/meshes2/DL.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint
+    name="dL"
+    type="continuous">
+    <origin
+      xyz="0.40495 -0.80703 0.28376"
+      rpy="-3.1416 0 0" />
+    <parent
+      link="base_link" />
+    <child
+      link="DL" />
+    <axis
+      xyz="0 1 0" />
+  </joint>
+
+
+
+     <link
+    name="DR">
+    <inertial>
+      <origin
+        xyz="5.5511E-17 0.03 -5.5511E-17"
+        rpy="0 0 0" />
+      <mass
+        value="10" />
+      <inertia
+        ixx="0.4"
+        ixy="0.0"
+        ixz="-0.0"
+        iyy="0.6"
+        iyz="0.0"
+        izz="0.15" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="$(find sam_bot_description)/meshes2/DL.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0.79216 0.81961 0.93333 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="$(find sam_bot_description)/meshes2/DL.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint
+    name="dR"
+    type="continuous">
+    <origin
+      xyz="0.40495 -1.25 0.28376"
+      rpy="-3.1416 0 0" />
+    <parent
+      link="base_link" />
+    <child
+      link="DR" />
+    <axis
+      xyz="0 1 0" />
+  </joint>
+
+
+  <link
+    name="PJ">
+    <inertial>
+      <origin
+        xyz="0.17816 -2.4295 0.19322"
+        rpy="0 0 0" />
+      <mass
+        value="0.1" />
+      <inertia
+        ixx="0.4"
+        ixy="0.0"
+        ixz="-0.0"
+        iyy="0.6"
+        iyz="0.0"
+        izz="0.15" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="$(find sam_bot_description)/meshes2/PJ.STL" />
+      </geometry>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="$(find sam_bot_description)/meshes2/PJ.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint
+    name="pJ"
+    type="prismatic">
+    <origin
+      xyz="0.19343 1.4524 0.38376"
+      rpy="0 0 0" />
+    <parent
+      link="base_link" />
+    <child
+      link="PJ" />
+    <axis
+      xyz="0 0 1" />
+    <limit
+      lower="0.2"
+      upper="0.5"
+      effort="10"
+      velocity="2" />
+  </joint>
+
+  <!-- diff_drive -->
+  	<gazebo>
+	  <plugin name='diff_drive' filename='libgazebo_ros_diff_drive.so'>
+	   <updateRate>100</updateRate>
+	    <!-- wheels -->
+	    <left_joint>dL</left_joint>
+	    <right_joint>dR</right_joint>
+
+	    <!-- kinematics -->
+	    <wheel_separation>0.4</wheel_separation>
+	    <wheel_diameter>0.3</wheel_diameter>
+
+	    <!-- limits -->
+	    <max_wheel_torque>2</max_wheel_torque>
+	    <max_wheel_acceleration>0</max_wheel_acceleration>
+	    <commandTopic>cmd_vel</commandTopic>
+	    <!-- output -->
+		<!-- <odometry_frame>odom</odometry_frame>
+	    <robot_base_frame>base_footprint</robot_base_frame> -->
+	    <publish_odom>true</publish_odom>
+	    <publish_odom_tf>true</publish_odom_tf>
+	    <publish_wheel_tf>true</publish_wheel_tf>
+		<odometryTopic>odom</odometryTopic>
+
+		<!-- Odometry frame, defaults to `odom` -->
+		<odometryFrame>odom</odometryFrame>
+		<!-- Robot frame to calculate odometry from, defaults to `base_footprint` -->
+		<robotBaseFrame>base_link</robotBaseFrame>
+		<odometryFrame>world</odometryFrame>
+        <odometryRate>20.0</odometryRate>
+
+	  </plugin>
+
+	</gazebo>
+
+
+
+ 
+
+</robot>

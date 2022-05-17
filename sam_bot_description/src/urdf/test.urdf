@@ -1,0 +1,501 @@
+
+<robot name="mooncake">
+
+<link name="base_footprint"/>
+
+<link name="base_link">
+	<pose> 0 0 0 0 0 0</pose>
+	<collision>
+      		<origin xyz="0 0 0.5" rpy="0 0 0" />
+      		<geometry>
+        		<cylinder length="1" radius="0.25"/>
+      		</geometry>
+      	</collision>
+        <visual>
+          <origin xyz="0 0 0.5" rpy="0 0 0" />
+          <geometry>
+            	<cylinder length="1" radius="0.25"/>
+          </geometry>
+          <material name="blue"/>
+        </visual>
+        <inertial>
+           	<mass value="5" />
+            	<origin xyz="0 0 0.5" rpy="0 0 0" />
+            	<inertia ixx="0.49" ixy="0" ixz="0" 
+            	iyy="0.49" iyz="0" 
+            	izz="0.16" />
+       </inertial>
+      </link>
+      
+      <link name="left_Wheel">
+	<collision>
+      		<geometry>
+        		<cylinder length="0.1" radius="0.1"/>
+      		</geometry>
+			<surface>
+             <contact>
+              <ode>
+                <soft_cfm>0</soft_cfm>
+                <soft_erp>0.2</soft_erp>
+                <kp>1e+5</kp>
+                <kd>1</kd>
+                <max_vel>0.01</max_vel>
+                <min_depth>0.001</min_depth>
+              </ode>
+             </contact>
+            </surface>
+      	</collision>
+        <visual>
+          	<geometry>
+            		<cylinder length="0.1" radius="0.1"/>
+            		<material name="white"/>
+          	</geometry>
+        </visual>
+        <inertial>
+            	<mass value="2" />
+            	<inertia ixx="0.007" ixy="0" ixz="0" 
+            	iyy="0.007" iyz="0" 
+            	izz="0.01" />
+       </inertial>
+      </link>
+      
+      <link name="right_Wheel">
+	<collision>
+      		<geometry>
+        		<cylinder length="0.1" radius="0.1"/>
+      		</geometry>
+			<surface>
+             <contact>
+              <ode>
+                <soft_cfm>0</soft_cfm>
+                <soft_erp>0.2</soft_erp>
+                <kp>1e+5</kp>
+                <kd>1</kd>
+                <max_vel>0.01</max_vel>
+                <min_depth>0.001</min_depth>
+              </ode>
+             </contact>
+            </surface>
+    </collision>
+        <visual>
+          	<geometry>
+            		<cylinder length="0.1" radius="0.1"/>
+            		<material name="white"/>
+          	</geometry>
+        </visual>
+        <inertial>
+            	<mass value="2" />
+            	<inertia ixx="0.007" ixy="0" ixz="0" 
+            	iyy="0.007" iyz="0" 
+            	izz="0.01" />
+       </inertial>
+      </link>
+      
+      <link name="sphere_Wheel">
+	<collision>
+      		<geometry>
+        		<sphere radius="0.1"/>
+      		</geometry>
+		    <surface>
+             <contact>
+              <ode>
+                <soft_cfm>0</soft_cfm>
+                <soft_erp>0.2</soft_erp>
+                <kp>1e+5</kp>
+                <kd>1</kd>
+                <max_vel>0.01</max_vel>
+                <min_depth>0.001</min_depth>
+              </ode>
+             </contact>
+            </surface>
+      	</collision>
+        <visual>
+          	<geometry>
+            		<sphere radius="0.1"/>
+            		<material name="blue"/>
+          	</geometry>
+        </visual>
+        <inertial>
+            	<mass value="5" />
+            	<inertia ixx="0.02" ixy="0" ixz="0" 
+            	iyy="0.02" iyz="0" 
+            	izz="0.02" />
+       </inertial>
+      </link>
+      
+      <link name='imu_link'>
+      <collision>
+      		<geometry>
+        		<box size="0.1 0.1 0.1"/>
+      		</geometry>
+      	</collision>
+      	<inertial>
+      		<mass value="0.2"/>
+      		<origin xyz="0 0 0.2" rpy=" 0 0 0"/>
+	      	<inertia ixx="0.00033" ixy="0.0" ixz="0" iyy="0.00033" iyz="0" izz="0.00033" />
+     	</inertial>
+    	<visual >
+      		<origin xyz="0 0 0.2" rpy=" 0 0 0"/>
+      		<geometry>
+        		<box size="0.1 0.1 0.1"/>
+      		</geometry>
+    	</visual>
+      </link>
+      
+      <link name='camera_link'>
+      <collision>
+      		<geometry>
+        		<box size="0.05 0.1 0.05"/>
+      		</geometry>
+      	</collision>
+      	<inertial>
+      		<mass value="0.5"/>
+      		<origin xyz="0 0 0" rpy=" 0 0 0"/>
+	      	<inertia ixx="0.01" ixy="0.0" ixz="0" iyy="0.02" iyz="0" izz="0.01" />
+     	</inertial>
+    	<visual >
+      		<origin xyz="0 0 0" rpy=" 0 0 0"/>
+      		<geometry>
+        		<box size="0.05 0.1 0.05"/>
+      		</geometry>
+    	</visual>
+      </link>
+      
+      <link name='laser_link'>
+      <collision>
+      		<geometry>
+        		<box size="0.1 0.1 0.1"/>
+      		</geometry>
+      	</collision>
+      	<inertial>
+      		<mass value="0.5"/>
+      		<origin xyz="0 0 0" rpy=" 0 0 0"/>
+	      	<inertia ixx="0.00033" ixy="0.0" ixz="0" iyy="0.00033" iyz="0" izz="0.00033" />
+     	</inertial>
+    	<visual >
+      		<origin xyz="0 0 0" rpy=" 0 0 0"/>
+      		<geometry>
+        		<box size="0.1 0.1 0.1"/>
+      		</geometry>
+    	</visual>
+      </link>
+      
+      <link name='lrod_link'>
+      <collision>
+      		<geometry>
+        		<cylinder length="0.2" radius="0.01"/>
+      		</geometry>
+      	</collision>
+      	<inertial>
+      		<mass value="0.1"/>
+      		<origin xyz="0 0 0" rpy=" 0 0 0"/>
+	      	<inertia ixx="1e-6" ixy="0.0" ixz="0" iyy="1e-6" iyz="0" izz="1e-6" />
+     	</inertial>
+    	<visual >
+      		<origin xyz="0 0 0" rpy=" 0 0 0"/>
+      		<geometry>
+        		<cylinder length="0.2" radius="0.01"/>
+      		</geometry>
+    	</visual>
+      </link>
+      
+      <link name="lsphere_link">
+	<collision>
+      		<geometry>
+        		<sphere radius="0.02"/>
+      		</geometry>
+   
+      	</collision>
+        <visual>
+          	<geometry>
+            		<sphere radius="0.02"/>
+          	</geometry>
+        </visual>
+        <inertial>
+            	<mass value="0.1" />
+            	<inertia ixx="1e-6" ixy="0" ixz="0" 
+            	iyy="1e-6" iyz="0" 
+            	izz="1e-6" />
+       </inertial>
+      </link>
+      
+      <link name='rrod_link'>
+      <collision>
+      		<geometry>
+        		<cylinder length="0.2" radius="0.01"/>
+      		</geometry>
+      	</collision>
+      	<inertial>
+      		<mass value="0.1"/>
+      		<origin xyz="0 0 0" rpy=" 0 0 0"/>
+	      	<inertia ixx="1e-6" ixy="0.0" ixz="0" iyy="1e-6" iyz="0" izz="1e-6" />
+     	</inertial>
+    	<visual >
+      		<origin xyz="0 0 0" rpy=" 0 0 0"/>
+      		<geometry>
+        		<cylinder length="0.2" radius="0.01"/>
+      		</geometry>
+    	</visual>
+      </link>
+      
+      <link name="rsphere_link">
+	<collision>
+      		<geometry>
+        		<sphere radius="0.02"/>
+      		</geometry>
+   
+      	</collision>
+        <visual>
+          	<geometry>
+            		<sphere radius="0.02"/>
+          	</geometry>
+        </visual>
+        <inertial>
+            	<mass value="0.1" />
+            	<inertia ixx="1e-6" ixy="0" ixz="0" 
+            	iyy="1e-6" iyz="0" 
+            	izz="1e-6" />
+       </inertial>
+      </link>
+      
+	  <joint name="base_joint" type="fixed">
+	        <origin xyz="0 0 0" rpy="0 0 0"/>
+			<parent link="base_footprint"/>
+			<child link="base_link"/>
+      </joint>
+
+      <joint name ="lrod_joint" type="fixed">
+      		<origin xyz="0 0.20 1.02" rpy="0 0 0"/>
+      		<parent link="base_link"/>
+        	<child link="lrod_link"/>
+      </joint>
+      
+       <joint name ="lsphere_joint" type="fixed">
+      		<origin xyz="0 0 0.1" rpy="0 0 0"/>
+      		<parent link="lrod_link"/>
+        	<child link="lsphere_link"/>
+      </joint>
+      
+      <joint name ="rrod_joint" type="fixed">
+      		<origin xyz="0 -0.20 1.02" rpy="0 0 0"/>
+      		<parent link="base_link"/>
+        	<child link="rrod_link"/>
+      </joint>
+      
+       <joint name ="rsphere_joint" type="fixed">
+      		<origin xyz="0 0 0.1" rpy="0 0 0"/>
+      		<parent link="rrod_link"/>
+        	<child link="rsphere_link"/>
+      </joint>
+      
+      <joint name ="left_wheel_joint" type="continuous">
+      		<origin xyz="0.1 0.2 0" rpy="-1.57 0 0"/>
+      		<parent link="base_link"/>
+        	<child link="left_Wheel"/>
+        	<axis  xyz="0 0 1" />
+      </joint>
+      
+      <joint name ="right_wheel_joint" type="continuous">
+      		<origin xyz="0.1 -0.2 0" rpy="-1.57 0 0"/>
+      		<parent link="base_link"/>
+        	<child link="right_Wheel"/>
+        	<axis  xyz="0 0 1" />
+      </joint>
+      
+      <joint name ="sphere_wheel_joint" type="fixed">
+      		<origin xyz="-0.2 0 0" rpy="0 0 0"/>
+      		<parent link="base_link"/>
+        	<child link="sphere_Wheel"/>
+        	
+      </joint>
+      
+       <joint name="imu_joint" type="fixed">
+          <origin xyz="0 0 0" rpy="0 0 0"/>
+	  <parent link="base_link"/>
+	  <child link="imu_link"/>
+	</joint>
+       
+       <joint name="camera_joint" type="fixed">
+          <origin xyz="0.2 0 1.025" rpy="0 0 0"/>
+	  <parent link="base_link"/>
+	  <child link="camera_link"/>
+	</joint>
+	
+	<joint name="laser_joint" type="fixed">
+          <origin xyz="0.28 0 0.5" rpy="0 0 0"/>
+	  <parent link="base_link"/>
+	  <child link="laser_link"/>
+	</joint>
+	
+	<!-- imu -->
+	<gazebo reference="imu_link">
+	   <gravity>true</gravity>
+	   <sensor name="imu_sensor" type="imu">
+	       <always_on>true</always_on>
+	       <update_rate>20</update_rate>
+	       <visualize>true</visualize>
+	       <topic>__default_topic__</topic>
+	    <plugin filename="libgazebo_ros_imu_sensor.so" name="imu_plugin">
+	    	<ros>
+        		<namespace>/demo</namespace>
+        		<remapping>~/out:=imu</remapping>
+      		</ros>
+		<topicName>imu</topicName>
+		<bodyName>imu_link</bodyName>
+		<updateRateHZ>20.0</updateRateHZ>
+		<gaussianNoise>0.0</gaussianNoise>
+		<xyzOffset>0 0 0</xyzOffset>
+		<rpyOffset>0 0 0</rpyOffset>
+		<frameName>imu_link</frameName>
+		<initialOrientationAsReference>false</initialOrientationAsReference>
+	     </plugin>
+	        <pose>0 0 0 0 0 0</pose>
+	    </sensor>
+  	</gazebo>
+  	
+  	<!-- camera -->
+	  <gazebo reference="camera_link">
+	    <sensor type="camera" name="camera1">
+	      <update_rate>30.0</update_rate>
+	      <camera name="head">
+		<horizontal_fov>1.3962634</horizontal_fov>
+		<image>
+		  <width>800</width>
+		  <height>800</height>
+		  <format>R8G8B8</format>
+		</image>
+		<clip>
+		  <near>0.02</near>
+		  <far>300</far>
+		</clip>
+		<noise>
+		  <type>gaussian</type>
+		  <!-- Noise is sampled independently per pixel on each frame.
+		       That pixel's noise value is added to each of its color
+		       channels, which at that point lie in the range [0,1]. -->
+		  <mean>0.0</mean>
+		  <stddev>0.007</stddev>
+		</noise>
+	      </camera>
+	      <plugin name="camera_controller" filename="libgazebo_ros_camera.so">
+		<alwaysOn>true</alwaysOn>
+		<updateRate>0.0</updateRate>
+		<cameraName>mooncake/camera1</cameraName>
+		<imageTopicName>image_raw</imageTopicName>
+		<cameraInfoTopicName>camera_info</cameraInfoTopicName>
+		<frameName>camera_link</frameName>
+		<hackBaseline>0.07</hackBaseline>
+		<distortionK1>0.0</distortionK1>
+		<distortionK2>0.0</distortionK2>
+		<distortionK3>0.0</distortionK3>
+		<distortionT1>0.0</distortionT1>
+		<distortionT2>0.0</distortionT2>
+	      </plugin>
+	    </sensor>
+	  </gazebo>
+  	
+  	 <!-- hokuyo laser-->
+	    <gazebo reference="laser_link">
+		<sensor type="ray" name="head_hokuyo_sensor">
+		    <pose>0 0 0 0 0 0</pose>
+		    <visualize>true</visualize>
+		    <update_rate>40</update_rate>
+		    <ray>
+		        <scan>
+		            <horizontal>
+		                <samples>720</samples>
+		                <resolution>1</resolution>
+		                <min_angle>-1.57</min_angle>
+		                <max_angle>1.57</max_angle>
+		            </horizontal>
+		        </scan>
+		        <range>
+		            <min>0.12</min>
+		            <max>10</max>
+		            <resolution>0.01</resolution>
+		        </range>
+		        <noise>
+		            <type>gaussian</type>
+		            <!-- Noise parameters based on published spec for Hokuyo laser
+		                 achieving "+-30mm" accuracy at range < 10m.  A mean of 0.0m and
+		                 stddev of 0.01m will put 99.7% of samples within 0.03m of the true
+		                 reading. -->
+		            <mean>0.0</mean>
+		            <stddev>0.01</stddev>
+		        </noise>
+		    </ray>
+		    <plugin name="lidar_controller" filename="libgazebo_ros_ray_sensor.so">
+		        <ros>
+		            <remapping>~/out:=scan</remapping>
+		        </ros>
+		        <output_type>sensor_msgs/LaserScan</output_type>
+				<radiation_type>infrared</radiation_type>
+		        <frameName>laser_link</frameName>
+		    </plugin>
+		</sensor>
+	    </gazebo>
+  	
+  	
+  	<!-- colour -->
+  	<gazebo reference="sphere_Wheel">
+	    <material>Gazebo/White</material>
+	    	<mu1 value="0.0"/>
+    		<mu2 value="0.0"/>
+	</gazebo>
+	<gazebo reference="camera_link">
+	    <material>Gazebo/White</material>
+	</gazebo>
+	<gazebo reference="base_link">
+	    <material>Gazebo/Green</material>
+	</gazebo>
+	<gazebo reference="laser_link">
+	    <material>Gazebo/White</material>
+	</gazebo>
+	<gazebo reference="lrod_link">
+	    <material>Gazebo/Green</material>
+	</gazebo>
+	<gazebo reference="lsphere_link">
+	    <material>Gazebo/Green</material>
+	</gazebo>
+	<gazebo reference="rrod_link">
+	    <material>Gazebo/Green</material>
+	</gazebo>
+	<gazebo reference="rsphere_link">
+	    <material>Gazebo/Green</material>
+	</gazebo>
+  	
+  	<!-- diff_drive -->
+  	<gazebo>
+	  <plugin name='diff_drive' filename='libgazebo_ros_diff_drive.so'>
+	   <updateRate>100</updateRate>
+	    <!-- wheels -->
+	    <left_joint>left_wheel_joint</left_joint>
+	    <right_joint>right_wheel_joint</right_joint>
+
+	    <!-- kinematics -->
+	    <wheel_separation>0.4</wheel_separation>
+	    <wheel_diameter>0.1</wheel_diameter>
+
+	    <!-- limits -->
+	    <max_wheel_torque>2</max_wheel_torque>
+	    <max_wheel_acceleration>0.5</max_wheel_acceleration>
+	    <commandTopic>cmd_vel</commandTopic>
+	    <!-- output -->
+		<!-- <odometry_frame>odom</odometry_frame>
+	    <robot_base_frame>base_footprint</robot_base_frame> -->
+	    <publish_odom>true</publish_odom>
+	    <publish_odom_tf>true</publish_odom_tf>
+	    <publish_wheel_tf>true</publish_wheel_tf>
+		<odometryTopic>odom</odometryTopic>
+
+		<!-- Odometry frame, defaults to `odom` -->
+		<odometryFrame>odom</odometryFrame>
+		<!-- Robot frame to calculate odometry from, defaults to `base_footprint` -->
+		<robotBaseFrame>base_footprint</robotBaseFrame>
+		<odometryFrame>world</odometryFrame>
+        <odometryRate>20.0</odometryRate>
+
+	  </plugin>
+
+	</gazebo>
+</robot>
